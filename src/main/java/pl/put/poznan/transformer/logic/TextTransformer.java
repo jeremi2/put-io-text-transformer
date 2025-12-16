@@ -17,6 +17,8 @@ public class TextTransformer {
                 text=text.toUpperCase();
             } else if (transformation.equals("inverse")) {
                 text=applyInversion(text);
+            } else if (transformation.equals("repetition")) {
+                text=removeRepetitions(text);
             }
         }
         return text;
@@ -36,6 +38,22 @@ public class TextTransformer {
             }
         }
         return new String(result);
+    }
+
+    private String removeRepetitions(String text) {
+        String[] words=text.split(" ");
+        if (words.length==0) return text;
+
+        StringBuilder sb=new StringBuilder();
+        sb.append(words[0]);
+
+        for (int i=1; i<words.length; i++) {
+
+            if (!words[i].equalsIgnoreCase(words[i-1])) {
+                sb.append(" ").append(words[i]);
+            }
+        }
+        return sb.toString();
     }
 
 }
