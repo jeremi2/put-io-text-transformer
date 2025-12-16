@@ -8,11 +8,34 @@ public class TextTransformer {
     private final String[] transforms;
 
     public TextTransformer(String[] transforms){
-        this.transforms = transforms;
+        this.transforms=transforms;
     }
 
     public String transform(String text){
-        // of course, normally it would do something based on the transforms
-        return text.toUpperCase();
+        for (String transformation : transforms) {
+            if (transformation.equals("upper")) {
+                text=text.toUpperCase();
+            } else if (transformation.equals("inverse")) {
+                text=applyInversion(text);
+            }
+        }
+        return text;
     }
+
+    private String applyInversion(String text) {
+        char[] characters=text.toCharArray();
+        char[] result=new char[characters.length];
+
+        for (int i=0; i<characters.length; i++) {
+            char letter=characters[characters.length-1-i];
+
+            if (Character.isUpperCase(characters[i])) {
+                result[i]=Character.toUpperCase(letter);
+            } else {
+                result[i]=Character.toLowerCase(letter);
+            }
+        }
+        return new String(result);
+    }
+
 }
