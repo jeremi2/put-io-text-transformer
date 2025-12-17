@@ -19,6 +19,10 @@ public class TextTransformer {
                 text=applyInversion(text);
             } else if (transformation.equals("repetition")) {
                 text=removeRepetitions(text);
+            } else if (transformation.equals("lower")) {
+                text=text.toLowerCase();
+            } else if (transformation.equals("capitalize")) {
+                text=applyCapitalize(text);
             }
         }
         return text;
@@ -54,6 +58,23 @@ public class TextTransformer {
             }
         }
         return sb.toString();
+
+    }
+
+
+    private String applyCapitalize(String text) {
+        String[] words=text.split(" ");
+        StringBuilder sb=new StringBuilder();
+        for (String w : words) {
+            if (!w.isEmpty()) {
+                sb.append(Character.toUpperCase(w.charAt(0)));
+                if (w.length()>1) {
+                    sb.append(w.substring(1).toLowerCase());
+                }
+                sb.append(" ");
+            }
+        }
+        return sb.toString().trim();
     }
 
 }
