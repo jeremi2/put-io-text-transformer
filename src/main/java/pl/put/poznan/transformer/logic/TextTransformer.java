@@ -23,8 +23,10 @@ public class TextTransformer {
                 text=text.toLowerCase();
             } else if (transformation.equals("capitalize")) {
                 text=applyCapitalize(text);
-            } else if (transformation.equals("shortcut")) {
+            } else if (transformation.equals("intoshortcut")) {
                 text=applyIntoShortcut(text);
+            } else if (transformation.equals("expandshortcut")) {
+                text=applyExpandShortcut(text);
             }
         }
         return text;
@@ -88,8 +90,36 @@ public class TextTransformer {
         text=text.replace("doktor", "dr");
         text=text.replace("magister", "mgr");
         text=text.replace("inżynier", "inż.");
+        text=text.replace("Na przykład", "np.");
+        text=text.replace("Między innymi", "m.in.");
+        text=text.replace("I tym podobne", "itp.");
+        text=text.replace("I tak dalej", "itd.");
+        text=text.replace("Profesor", "prof.");
+        text=text.replace("Doktor", "dr");
+        text=text.replace("Magister", "mgr");
+        text=text.replace("Inżynier", "inż.");
+
         return text;
     }
 
+    private String applyExpandShortcut(String text) {
+        text=text.replace("Prof.", "Profesor");
+        text=text.replace("prof.", "profesor");
+        text=text.replace("Dr", "Doktor");
+        text=text.replace("dr", "doktor");
+        text=text.replace("Mgr", "Magister");
+        text=text.replace("mgr", "magister");
+        text=text.replace("Inż.", "Inżynier");
+        text=text.replace("inż.", "inżynier");
+        text=text.replace("Np.", "Na przykład");
+        text=text.replace("np.", "na przykład");
+        text=text.replace("Itd.", "I tym podobne");
+        text=text.replace("itd.", "i tym podobne");
+        text=text.replace("Itp.", "I tym podobne");
+        text=text.replace("itp.", "i tym podobne");
+        text=text.replace("M.in.", "Między innymi");
+        text=text.replace("m.in.", "między innymi");
+        return text;
+    }
 
 }
