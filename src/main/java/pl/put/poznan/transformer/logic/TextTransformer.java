@@ -23,6 +23,8 @@ public class TextTransformer {
                 text=text.toLowerCase();
             } else if (transformation.equals("capitalize")) {
                 text=applyCapitalize(text);
+            } else if (transformation.equals("shortcut")) {
+                text=applyIntoShortcut(text);
             }
         }
         return text;
@@ -76,5 +78,18 @@ public class TextTransformer {
         }
         return sb.toString().trim();
     }
+
+    private String applyIntoShortcut(String text) {
+        text=text.replace("na przykład", "np.");
+        text=text.replace("między innymi", "m.in.");
+        text=text.replace("i tym podobne", "itp.");
+        text=text.replace("i tak dalej", "itd.");
+        text=text.replace("profesor", "prof.");
+        text=text.replace("doktor", "dr");
+        text=text.replace("magister", "mgr");
+        text=text.replace("inżynier", "inż.");
+        return text;
+    }
+
 
 }
