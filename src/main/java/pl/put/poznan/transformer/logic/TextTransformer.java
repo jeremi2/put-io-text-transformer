@@ -23,6 +23,8 @@ public class TextTransformer {
                 text=text.toLowerCase();
             } else if (transformation.equals("capitalize")) {
                 text=applyCapitalize(text);
+            } else if (transformation.equals("latex")){
+                text=applyLatexFormat(text);
             }
         }
         return text;
@@ -75,6 +77,10 @@ public class TextTransformer {
             }
         }
         return sb.toString().trim();
+    }
+
+    private String applyLatexFormat(String text) {
+        return text.replace("&", "\\&").replace("$", "\\$");
     }
 
 }
