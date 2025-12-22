@@ -163,6 +163,6 @@ public class TextTransformer {
                 result+=" ";
             }
         }
-        return result.trim();
+        return result.toString().replaceAll("\\s+", " ").trim();
     }
 }
