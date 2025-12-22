@@ -105,23 +105,24 @@ public class TextTransformer {
     }
 
     private String applyExpandShortcut(String text) {
-        text=text.replace("Prof.", "Profesor");
-        text=text.replace("prof.", "profesor");
-        text=text.replace("Dr", "Doktor");
-        text=text.replace("dr", "doktor");
-        text=text.replace("Mgr", "Magister");
-        text=text.replace("mgr", "magister");
-        text=text.replace("Inż.", "Inżynier");
-        text=text.replace("inż.", "inżynier");
-        text=text.replace("Np.", "Na przykład");
-        text=text.replace("np.", "na przykład");
-        text=text.replace("Itd.", "I tym podobne");
-        text=text.replace("itd.", "i tym podobne");
-        text=text.replace("Itp.", "I tym podobne");
-        text=text.replace("itp.", "i tym podobne");
-        text=text.replace("M.in.", "Między innymi");
-        text=text.replace("m.in.", "między innymi");
+        text = text.replace("Prof.", "Profesor");
+        text = text.replace("prof.", "profesor");
+        text = text.replace("Dr", "Doktor");
+        text = text.replace("dr", "doktor");
+        text = text.replace("Mgr", "Magister");
+        text = text.replace("mgr", "magister");
+        text = text.replace("Inż.", "Inżynier");
+        text = text.replace("inż.", "inżynier");
+        text = text.replace("Np.", "Na przykład");
+        text = text.replace("np.", "na przykład");
+        text = text.replace("Itd.", "I tym podobne");
+        text = text.replace("itd.", "i tym podobne");
+        text = text.replace("Itp.", "I tym podobne");
+        text = text.replace("itp.", "i tym podobne");
+        text = text.replace("M.in.", "Między innymi");
+        text = text.replace("m.in.", "między innymi");
         return text;
+    }
     private String applyLatexFormat(String text) {
         return text.replace("&", "\\&").replace("$", "\\$");
     }
