@@ -27,6 +27,8 @@ public class TextTransformer {
                 text=applyIntoShortcut(text);
             } else if (transformation.equals("expandshortcut")) {
                 text=applyExpandShortcut(text);
+            } else if (transformation.equals("latex")){
+                text=applyLatexFormat(text);
             }
         }
         return text;
@@ -120,6 +122,8 @@ public class TextTransformer {
         text=text.replace("M.in.", "Między innymi");
         text=text.replace("m.in.", "między innymi");
         return text;
+    private String applyLatexFormat(String text) {
+        return text.replace("&", "\\&").replace("$", "\\$");
     }
 
 }
