@@ -131,7 +131,7 @@ public class TextTransformer {
     private String applyNumbersToText(String text) {
         String[] units={"", "jeden", "dwa", "trzy", "cztery", "piec", "szesc", "siedem", "osiem", "dziewiec"};
         String[] teens={"", "dziesiec", "jedenascie", "dwanascie", "trzynascie", "czternascie", "pietnascie", "szesnascie", "siedemnascie", "osiemnascie", "dziewietnascie"};
-        String[] tens={"", "dziesiec", "dwadziescia", "trzydziesci", "czterdziesci", "piecdзiesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"};
+        String[] tens={"", "dziesiec", "dwadziescia", "trzydziesci", "czterdziesci", "piecdziesiat", "szescdziesiat", "siedemdziesiat", "osiemdziesiat", "dziewiecdziesiat"};
         String[] hundreds={"", "sto", "dwiescie", "trzysta", "czterysta", "piecset", "szescset", "siedemset", "osiemset", "dziewiecset"};
         String[] words=text.split(" ");
         String result="";
