@@ -34,4 +34,25 @@ class TextTransformerTest {
         TextTransformer textTransformer = new TextTransformer(new String[]{"latex"});
         assertEquals("test \\&\\$ \\$test\\&\\&test \\$", textTransformer.transform("test &$ $test&&test $"));
     }
+    @Test
+    public void testNumberToTextTransform() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"numbertotext"});
+        assertEquals("sto dwa", textTransformer.transform("102"));
+        assertEquals("piecdziesiat", textTransformer.transform("50"));
+        assertEquals("zero", textTransformer.transform("0"));
+    }
+
+    @Test
+    public void testIntoShortcutTransform() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"intoshortcut"});
+        assertEquals("np. itd.", textTransformer.transform("na przykład i tak dalej"));
+        assertEquals("dr prof.", textTransformer.transform("doktor profesor"));
+    }
+
+    @Test
+    public void testExpandShortcutTransform() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"expandshortcut"});
+        assertEquals("Na przykład i tym podobne", textTransformer.transform("Np. itd."));
+        assertEquals("profesor doktor", textTransformer.transform("prof. dr"));
+    }
 }
