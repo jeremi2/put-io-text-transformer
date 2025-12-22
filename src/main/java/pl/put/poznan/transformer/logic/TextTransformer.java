@@ -75,7 +75,7 @@ public class TextTransformer {
             if (!w.isEmpty()) {
                 sb.append(Character.toUpperCase(w.charAt(0)));
                 if (w.length() > 1) {
-                    sb.append(w.substring(1).toLowerCase());
+                    sb.append(w.substring(1));
                 }
                 sb.append(" ");
             }
