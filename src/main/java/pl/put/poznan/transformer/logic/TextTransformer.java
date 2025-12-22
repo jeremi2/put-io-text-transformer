@@ -116,9 +116,9 @@ public class TextTransformer {
         text = text.replace("Np.", "Na przykład");
         text = text.replace("np.", "na przykład");
         text = text.replace("Itd.", "I tym podobne");
-        text = text.replace("itd.", "i tym подобные");
+        text = text.replace("itd.", "i tym podobne");
         text = text.replace("Itp.", "I tym podobne");
-        text = text.replace("itp.", "i tym подобные");
+        text = text.replace("itp.", "i tym podobne");
         text = text.replace("M.in.", "Między innymi");
         text = text.replace("m.in.", "między innymi");
         return text;
