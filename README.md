@@ -19,4 +19,15 @@ Autorzy:
 
 ##### Plik .jar z działającym API jest dostępny jako artifact, który powstaje przy wykonaniu github action (build).
 
+## Retrospektywa sprintu
 
+### Co jako zespół chcielibyśmy zacząć robić?
+- Regularnie korzystać z GitHub Projects do zarządzania zadaniami.
+- Wcześniej rozpoczynać prace nad zadaniami, zamiast odkładać je na koniec sprintu.
+
+### Co jako zespół powinniśmy przestać robić?
+- Pracować bez zaznaczania postępu zadań.
+
+### Co jako zespół powinniśmy kontynuować robić?
+- Utrzymywać dobrą komunikację w zespole.  
+- Regularnie dzielić się postępami prac.
