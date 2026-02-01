@@ -13,9 +13,13 @@ public class ApplyMarkdownToLatexDecorator extends TextDecorator {
         String result = super.transform(text);
         if (result == null || result.isEmpty()) return result;
 
-        if (result.contains("- ")) {
+        if (result.matches("(?s).*?\\d+\\.\\s+.*")) {
+            result = result.replaceAll("\\d+\\.\\s+", "\\\\item ");
+            return "\\begin{enumerate}\n" + result.trim() + "\n\\end{enumerate}";
+        }
+        else if (result.contains("- ")) {
             result = result.replace("- ", "\\item ");
-            result = "\\begin{itemize}\n" + result + "\n\\end{itemize}";
+            return "\\begin{itemize}\n" + result.trim() + "\n\\end{itemize}";
         }
 
         return result;

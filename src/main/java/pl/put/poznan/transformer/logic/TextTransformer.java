@@ -52,8 +52,7 @@ public class TextTransformer {
                     break;
 
                 case "latextomarkdown":
-                    transformer = new ApplyLatexToMarkdownDecorator(transformer);
-                    break;
+                    transformer = new ApplyLatexToMarkdownDecorator(transformer);break;
 
                 case "markdowntolatex":
                     transformer = new ApplyMarkdownToLatexDecorator(transformer);

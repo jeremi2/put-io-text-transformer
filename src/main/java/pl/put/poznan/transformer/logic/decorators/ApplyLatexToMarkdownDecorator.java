@@ -11,12 +11,30 @@ public class ApplyLatexToMarkdownDecorator extends TextDecorator {
     @Override
     public String transform(String text) {
         String result = super.transform(text);
-        if (result == null) return null;
+        if (result == null || result.isEmpty()) return result;
 
-        result = result.replaceAll("\\\\begin\\{itemize\\}\\s*", "");
-        result = result.replaceAll("\\s*\\\\end\\{itemize\\}", "");
-        result = result.replaceAll("\\\\item\\s+", "- ");
+        boolean isEnumerate = result.contains("enumerate");
 
-        return result;
+        result = result.replace("\\begin{itemize}", "")
+                .replace("\\end{itemize}", "")
+                .replace("\\begin{enumerate}", "")
+                .replace("\\end{enumerate}", "");
+
+        String[] items = result.split("\\\\item");
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+
+        for (String item : items) {
+            String trimmedItem = item.trim();
+            if (!trimmedItem.isEmpty()) {
+                if (sb.length() > 0) sb.append("\n");
+                if (isEnumerate) {
+                    sb.append(count++).append(". ").append(trimmedItem);
+                } else {
+                    sb.append("- ").append(trimmedItem);
+                }
+            }
+        }
+        return sb.toString();
     }
 }
