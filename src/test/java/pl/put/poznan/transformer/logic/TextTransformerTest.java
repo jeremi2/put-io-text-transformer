@@ -55,4 +55,54 @@ class TextTransformerTest {
         assertEquals("Na przykład i tym podobne", textTransformer.transform("Np. itd."));
         assertEquals("profesor doktor", textTransformer.transform("prof. dr"));
     }
+
+    @Test
+    public void testLatexToMarkdownItemize() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
+        String input = "\\begin{itemize} \\item A \\item B \\end{itemize}";
+        assertEquals("- A\n- B", textTransformer.transform(input).trim());
+    }
+
+    @Test
+    public void testLatexToMarkdownEnumerate() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
+        String input = "\\begin{enumerate} \\item A \\item B \\end{enumerate}";
+        assertEquals("1. A\n2. B", textTransformer.transform(input).trim());
+    }
+
+    @Test
+    public void testMarkdownToLatexItemize() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"markdowntolatex"});
+        String input = "- A\n- B";
+        String result = textTransformer.transform(input);
+        assertTrue(result.contains("\\begin{itemize}") && result.contains("\\item A") && result.contains("\\end{itemize}"));
+    }
+
+    @Test
+    public void testMarkdownToLatexEnumerate() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"markdowntolatex"});
+        String input = "1. A\n2. B";
+        String result = textTransformer.transform(input);
+        assertTrue(result.contains("\\begin{enumerate}") && result.contains("\\item A") && result.contains("\\end{enumerate}"));
+    }
+
+    @Test
+    public void testAddSpacesOne() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"addspaces"});
+        assertEquals("Dzień dobry.", textTransformer.transform("Dzieńdobry."));
+    }
+
+    @Test
+    public void testAddSpacesTwo() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"addspaces"});
+        assertEquals("Brrr, zimno dzisiaj jest.", textTransformer.transform("Brrr,zimno dzisiajjest."));
+    }
+
+    @Test
+    public void testAddSpacesThree() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"addspaces"});
+        String input = "Pi równa się 4.00,inikt mnie nie przekona, że tak nie jest.";
+        String expected = "Pi równa się 4.00, i nikt mnie nie przekona, że tak nie jest.";
+        assertEquals(expected, textTransformer.transform(input));
+    }
 }

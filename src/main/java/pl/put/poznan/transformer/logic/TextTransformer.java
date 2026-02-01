@@ -51,6 +51,10 @@ public class TextTransformer {
                     transformer = new ApplyNumbersToTextDecorator(transformer);
                     break;
 
+                case "addspaces":
+                    transformer = new AddMissingSpacesDecorator(transformer);
+                    break;
+
                 default:
                     break;
             }
