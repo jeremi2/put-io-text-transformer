@@ -51,6 +51,13 @@ public class TextTransformer {
                     transformer = new ApplyNumbersToTextDecorator(transformer);
                     break;
 
+                case "latextomarkdown":
+                    transformer = new ApplyLatexToMarkdownDecorator(transformer);break;
+
+                case "markdowntolatex":
+                    transformer = new ApplyMarkdownToLatexDecorator(transformer);
+                    break;
+
                 default:
                     break;
             }

@@ -55,4 +55,34 @@ class TextTransformerTest {
         assertEquals("Na przykład i tym podobne", textTransformer.transform("Np. itd."));
         assertEquals("profesor doktor", textTransformer.transform("prof. dr"));
     }
+
+    @Test
+    public void testLatexToMarkdownItemize() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
+        String input = "\\begin{itemize} \\item A \\item B \\end{itemize}";
+        assertEquals("- A\n- B", textTransformer.transform(input).trim());
+    }
+
+    @Test
+    public void testLatexToMarkdownEnumerate() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
+        String input = "\\begin{enumerate} \\item A \\item B \\end{enumerate}";
+        assertEquals("1. A\n2. B", textTransformer.transform(input).trim());
+    }
+
+    @Test
+    public void testMarkdownToLatexItemize() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"markdowntolatex"});
+        String input = "- A\n- B";
+        String result = textTransformer.transform(input);
+        assertTrue(result.contains("\\begin{itemize}") && result.contains("\\item A") && result.contains("\\end{itemize}"));
+    }
+
+    @Test
+    public void testMarkdownToLatexEnumerate() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"markdowntolatex"});
+        String input = "1. A\n2. B";
+        String result = textTransformer.transform(input);
+        assertTrue(result.contains("\\begin{enumerate}") && result.contains("\\item A") && result.contains("\\end{enumerate}"));
+    }
 }
