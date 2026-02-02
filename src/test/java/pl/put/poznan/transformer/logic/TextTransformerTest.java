@@ -57,6 +57,18 @@ class TextTransformerTest {
     }
 
     @Test
+    public void testCurrencyNoSpace() {
+        TextTransformer tt = new TextTransformer(new String[]{"currency"});
+        assertEquals("400zł", tt.transform("$100"));
+        assertEquals("400PLN", tt.transform("100USD"));
+    }
+
+    @Test
+    public void testCurrencyWithSpace() {
+        TextTransformer tt = new TextTransformer(new String[]{"currency"});
+        assertEquals("400 zł", tt.transform("$ 100"));
+        assertEquals("400 PLN", tt.transform("100 USD"));
+
     public void testLatexToMarkdownItemize() {
         TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
         String input = "\\begin{itemize} \\item A \\item B \\end{itemize}";

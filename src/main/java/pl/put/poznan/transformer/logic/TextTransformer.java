@@ -51,8 +51,13 @@ public class TextTransformer {
                     transformer = new ApplyNumbersToTextDecorator(transformer);
                     break;
 
+                case "currency":
+                    transformer = new AddCurrencyConversionDecorator(transformer);
+                    break;
+
                 case "latextomarkdown":
-                    transformer = new ApplyLatexToMarkdownDecorator(transformer);break;
+                    transformer = new ApplyLatexToMarkdownDecorator(transformer);
+                    break;
 
                 case "markdowntolatex":
                     transformer = new ApplyMarkdownToLatexDecorator(transformer);
