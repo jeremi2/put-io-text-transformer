@@ -55,6 +55,34 @@ public class TextTransformer {
                     transformer = new AddCurrencyConversionDecorator(transformer);
                     break;
 
+                case "latextomarkdown":
+                    transformer = new ApplyLatexToMarkdownDecorator(transformer);
+                    break;
+
+                case "markdowntolatex":
+                    transformer = new ApplyMarkdownToLatexDecorator(transformer);
+                    break;
+
+                case "hash":
+                    transformer = new ApplyHashDecorator(transformer);
+                    break;
+
+                case "snakecase":
+                    transformer = new ApplySnakeCaseDecorator(transformer);
+                    break;
+
+                case "camelcase":
+                    transformer = new ApplyCamelCaseDecorator(transformer);
+                    break;
+
+                case "kebabcase":
+                    transformer = new ApplyKebabCaseDecorator(transformer);
+                    break;
+
+                case "pascalcase":
+                    transformer = new ApplyPascalCaseDecorator(transformer);
+                    break;
+
                 default:
                     break;
             }
