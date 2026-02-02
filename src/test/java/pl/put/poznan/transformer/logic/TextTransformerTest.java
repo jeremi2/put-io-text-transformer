@@ -85,4 +85,10 @@ class TextTransformerTest {
         String result = textTransformer.transform(input);
         assertTrue(result.contains("\\begin{enumerate}") && result.contains("\\item A") && result.contains("\\end{enumerate}"));
     }
+
+    @Test
+    public void testHash() {
+        TextTransformer textTransformer = new TextTransformer(new String[]{"hash"});
+        assertEquals("b49258de227b5ef95d0560fff51dbd1b1b1f777b98e61f1f42d81b7acb3f1379", textTransformer.transform("Dla Temerii zrobię wszystko."));
+    }
 }
