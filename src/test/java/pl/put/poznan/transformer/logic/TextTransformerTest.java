@@ -55,4 +55,18 @@ class TextTransformerTest {
         assertEquals("Na przykład i tym podobne", textTransformer.transform("Np. itd."));
         assertEquals("profesor doktor", textTransformer.transform("prof. dr"));
     }
+
+    @Test
+    public void testCurrencyNoSpace() {
+        TextTransformer tt = new TextTransformer(new String[]{"currency"});
+        assertEquals("400zł", tt.transform("$100"));
+        assertEquals("400PLN", tt.transform("100USD"));
+    }
+
+    @Test
+    public void testCurrencyWithSpace() {
+        TextTransformer tt = new TextTransformer(new String[]{"currency"});
+        assertEquals("400 zł", tt.transform("$ 100"));
+        assertEquals("400 PLN", tt.transform("100 USD"));
+    }
 }

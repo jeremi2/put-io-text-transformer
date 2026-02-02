@@ -51,6 +51,10 @@ public class TextTransformer {
                     transformer = new ApplyNumbersToTextDecorator(transformer);
                     break;
 
+                case "currency":
+                    transformer = new AddCurrencyConversionDecorator(transformer);
+                    break;
+
                 default:
                     break;
             }
