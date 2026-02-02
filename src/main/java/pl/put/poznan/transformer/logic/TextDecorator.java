@@ -11,4 +11,10 @@ public abstract class TextDecorator implements Transformer{
     public String transform(String text) {
         return transformer.transform(text);
     }
+
+    protected String[] splitToWords(String text) {
+        text = text.replace("-", " ").replace("_", " ");
+        text = text.replaceAll("([a-z])([A-Z])", "$1 $2");
+        return text.toLowerCase().split("\\s+");
+    }
 }

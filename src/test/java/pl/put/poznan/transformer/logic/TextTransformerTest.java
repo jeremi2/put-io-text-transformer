@@ -91,4 +91,36 @@ class TextTransformerTest {
         TextTransformer textTransformer = new TextTransformer(new String[]{"hash"});
         assertEquals("b49258de227b5ef95d0560fff51dbd1b1b1f777b98e61f1f42d81b7acb3f1379", textTransformer.transform("Dla Temerii zrobię wszystko."));
     }
+
+    @Test
+    void testSnakeCaseTransform() {
+        TextTransformer transformer = new TextTransformer(new String[]{"snakecase"});
+        assertEquals("snake_case_var", transformer.transform("snakeCaseVar"));
+        assertEquals("snake_case_var", transformer.transform("SnakeCaseVar"));
+        assertEquals("snake_case_var", transformer.transform("snake-case-var"));
+    }
+
+    @Test
+    void testCamelCaseTransform() {
+        TextTransformer transformer = new TextTransformer(new String[]{"camelcase"});
+        assertEquals("camelCaseVar", transformer.transform("camel_case_var"));
+        assertEquals("camelCaseVar", transformer.transform("camel-case-var"));
+        assertEquals("camelCaseVar", transformer.transform("CamelCaseVar"));
+    }
+
+    @Test
+    void testKebabCaseTransform() {
+        TextTransformer transformer = new TextTransformer(new String[]{"kebabcase"});
+        assertEquals("kebab-case-var", transformer.transform("kebabCaseVar"));
+        assertEquals("kebab-case-var", transformer.transform("KebabCaseVar"));
+        assertEquals("kebab-case-var", transformer.transform("kebab_case_var"));
+    }
+
+    @Test
+    void testPascalCaseTransform() {
+        TextTransformer transformer = new TextTransformer(new String[]{"pascalcase"});
+        assertEquals("PascalCaseVar", transformer.transform("pascal_case_var"));
+        assertEquals("PascalCaseVar", transformer.transform("pascal-case-var"));
+        assertEquals("PascalCaseVar", transformer.transform("pascalCaseVar"));
+    }
 }
