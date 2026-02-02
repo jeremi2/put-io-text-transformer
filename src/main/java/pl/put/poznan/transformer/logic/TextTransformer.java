@@ -58,6 +58,10 @@ public class TextTransformer {
                     transformer = new ApplyMarkdownToLatexDecorator(transformer);
                     break;
 
+                case "hash":
+                    transformer = new ApplyHashDecorator(transformer);
+                    break;
+
                 default:
                     break;
             }
