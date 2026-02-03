@@ -68,6 +68,7 @@ class TextTransformerTest {
         TextTransformer tt = new TextTransformer(new String[]{"currency"});
         assertEquals("400 zł", tt.transform("$ 100"));
         assertEquals("400 PLN", tt.transform("100 USD"));
+    }
 
     public void testLatexToMarkdownItemize() {
         TextTransformer textTransformer = new TextTransformer(new String[]{"latextomarkdown"});
